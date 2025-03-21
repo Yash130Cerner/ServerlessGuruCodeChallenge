@@ -1,0 +1,66 @@
+service: coffee-shop-api
+frameworkVersion: '3.40.0'
+
+provider:
+  name: aws
+  runtime: nodejs22.x
+  region: us-east-2  # Change this if you're using another region
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+        - dynamodb:GetItem
+        - dynamodb:Scan
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: arn:aws:dynamodb:us-east-2:*:table/orders
+
+functions:
+  createOrder:
+    handler: handlers/createOrder.handler
+    events:
+      - http:
+          path: orders
+          method: post
+
+  getOrder:
+    handler: handlers/getOrder.handler
+    events:
+      - http:
+          path: orders/{order_id}
+          method: get
+
+  listOrders:
+    handler: handlers/listOrders.handler
+    events:
+      - http:
+          path: orders
+          method: get
+
+  updateOrder:
+    handler: handlers/updateOrder.handler
+    events:
+      - http:
+          path: orders/{order_id}
+          method: put
+
+  deleteOrder:
+    handler: handlers/deleteOrder.handler
+    events:
+      - http:
+          path: orders/{order_id}
+          method: delete
+
+resources:
+  Resources:
+    OrdersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: orders
+        AttributeDefinitions:
+          - AttributeName: order_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: order_id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
