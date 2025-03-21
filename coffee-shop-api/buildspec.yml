@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo "Installing Serverless Framework..."
+      - npm install -g serverless
+      - cd coffee-shop-api  # Ensure we're in the correct folder
+      - npm install
+  build:
+    commands:
+      - echo "Deploying with Serverless Framework..."
+      - cd coffee-shop-api  # Ensure we're in the correct folder
+      - serverless deploy
+artifacts:
+  files:
+    - "**/*"
