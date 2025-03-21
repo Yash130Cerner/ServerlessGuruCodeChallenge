@@ -5,15 +5,17 @@ phases:
     runtime-versions:
       nodejs: 20
     commands:
+      - echo "Checking current directory..."
+      - pwd  # Print the current directory
+      - echo "Listing files..."
+      - ls -la  # Show files inside the current directory
       - echo "Installing Serverless Framework..."
       - npm install -g serverless
-      - cd coffee-shop-api  # Ensure we're in the correct folder
-      - npm install
+      - npm install  # Remove cd coffee-shop-api
   build:
     commands:
       - echo "Deploying with Serverless Framework..."
-      - cd coffee-shop-api  # Ensure we're in the correct folder
-      - serverless deploy
+      - serverless deploy  # Remove cd coffee-shop-api
 artifacts:
   files:
     - "**/*"
