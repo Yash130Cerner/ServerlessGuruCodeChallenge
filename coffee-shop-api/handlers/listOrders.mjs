@@ -3,7 +3,7 @@ import { DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
 
 const client = new DynamoDBClient({});
 const dynamoDB = DynamoDBDocumentClient.from(client);
-const TABLE_NAME = "orders";
+const TABLE_NAME = process.env.TABLE_NAME; // Dynamic per stage
 
 export const handler = async () => {
     try {

@@ -3,7 +3,7 @@ import { DynamoDBDocumentClient, UpdateCommand } from "@aws-sdk/lib-dynamodb";
 
 const client = new DynamoDBClient({});
 const dynamoDB = DynamoDBDocumentClient.from(client);
-const TABLE_NAME = "orders";
+const TABLE_NAME = process.env.TABLE_NAME; // Dynamic per stage
 
 export const handler = async (event) => {
     try {
@@ -20,7 +20,7 @@ export const handler = async (event) => {
             ":price": body.total_price
         };
 
-        // **Prevent creating a new order if it doesn't exist**
+        // Prevent creating a new order if it doesn't exist**
         const conditionExpression = "attribute_exists(order_id)";
 
         const result = await dynamoDB.send(new UpdateCommand({

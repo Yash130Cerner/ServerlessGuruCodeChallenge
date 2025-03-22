@@ -3,8 +3,14 @@ frameworkVersion: '3.40.0'
 
 provider:
   name: aws
-  runtime: nodejs22.x
-  region: us-east-2  # Change this if you're using another region
+  runtime: nodejs20.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-2
+
+  environment:
+    STAGE: ${opt:stage, 'dev'}
+    TABLE_NAME: ${self:service}-${opt:stage, 'dev'}-orders
+
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -13,7 +19,7 @@ provider:
         - dynamodb:Scan
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: arn:aws:dynamodb:us-east-2:*:table/orders
+      Resource: arn:aws:dynamodb:us-east-2:*:table/${self:service}-${opt:stage, 'dev'}-orders
 
 functions:
   createOrder:
@@ -56,7 +62,7 @@ resources:
     OrdersTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: orders
+        TableName: ${self:service}-${opt:stage, 'dev'}-orders
         AttributeDefinitions:
           - AttributeName: order_id
             AttributeType: S

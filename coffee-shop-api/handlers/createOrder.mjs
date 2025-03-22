@@ -1,9 +1,10 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 
+// Use environment variable to support multi-stage table name
 const client = new DynamoDBClient({});
 const dynamoDB = DynamoDBDocumentClient.from(client);
-const TABLE_NAME = "orders";
+const TABLE_NAME = process.env.TABLE_NAME; // Dynamic per stage
 
 export const handler = async (event) => {
     try {
