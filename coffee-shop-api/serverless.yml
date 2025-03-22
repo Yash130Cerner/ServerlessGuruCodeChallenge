@@ -19,6 +19,9 @@ provider:
         - dynamodb:Scan
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:PutLogEvents
       Resource: arn:aws:dynamodb:us-east-2:*:table/${self:service}-${opt:stage, 'dev'}-orders
 
 functions:
