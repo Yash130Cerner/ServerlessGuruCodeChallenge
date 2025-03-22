@@ -25,7 +25,7 @@ export const handler = async (event) => {
 
         return {
             statusCode: 201,
-            body: JSON.stringify({ message: "Order created successfully on prod", order }),
+            body: JSON.stringify({ message: "Order created successfully", order }),
         };
     } catch (error) {
         console.error("Error creating order:", error);
