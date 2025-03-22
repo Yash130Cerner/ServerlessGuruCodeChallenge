@@ -1,4 +1,3 @@
-listOrders:
   handler: handlers/listOrders.handler
   events:
     - http:

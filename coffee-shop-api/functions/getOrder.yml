@@ -1,4 +1,3 @@
-getOrder:
   handler: handlers/getOrder.handler
   events:
     - http:

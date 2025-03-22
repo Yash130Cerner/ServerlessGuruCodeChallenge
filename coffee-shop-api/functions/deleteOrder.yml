@@ -1,4 +1,3 @@
-deleteOrder:
   handler: handlers/deleteOrder.handler
   events:
     - http:

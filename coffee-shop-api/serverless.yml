@@ -24,13 +24,12 @@ provider:
         - logs:PutLogEvents
       Resource: arn:aws:dynamodb:us-east-2:*:table/${self:service}-${opt:stage, 'dev'}-orders
 
-functions:
-  # Modular function imports
-  ${file(./functions/createOrder.yml)}
-  ${file(./functions/getOrder.yml)}
-  ${file(./functions/listOrders.yml)}
-  ${file(./functions/updateOrder.yml)}
-  ${file(./functions/deleteOrder.yml)}
+functions: 
+  createOrder: ${file(./functions/createOrder.yml)}
+  getOrder: ${file(./functions/getOrder.yml)}
+  listOrders: ${file(./functions/listOrders.yml)}
+  updateOrder: ${file(./functions/updateOrder.yml)}
+  deleteOrder: ${file(./functions/deleteOrder.yml)}
 
 package:
   individually: true  # Package functions separately for faster deployment and cleaner bundles
