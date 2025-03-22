@@ -1,6 +1,6 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
-import { createOrderSchema } from "./validators/orderValidator";
+import { createOrderSchema } from "./validators/orderValidator.js";
 
 // Use environment variable to support multi-stage table name
 const client = new DynamoDBClient({});
