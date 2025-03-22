@@ -1,0 +1,6 @@
+createOrder:
+  handler: handlers/createOrder.handler
+  events:
+    - http:
+        path: orders
+        method: post

@@ -1,0 +1,6 @@
+updateOrder:
+  handler: handlers/updateOrder.handler
+  events:
+    - http:
+        path: orders/{order_id}
+        method: put
