@@ -1,0 +1,5 @@
+  handler: handlers/getOrder.handler
+  events:
+    - http:
+        path: orders/{order_id}
+        method: get

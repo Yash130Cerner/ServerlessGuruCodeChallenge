@@ -24,52 +24,15 @@ provider:
         - logs:PutLogEvents
       Resource: arn:aws:dynamodb:us-east-2:*:table/${self:service}-${opt:stage, 'dev'}-orders
 
-functions:
-  createOrder:
-    handler: handlers/createOrder.handler
-    events:
-      - http:
-          path: orders
-          method: post
+functions: 
+  createOrder: ${file(./functions/createOrder.yml)}
+  getOrder: ${file(./functions/getOrder.yml)}
+  listOrders: ${file(./functions/listOrders.yml)}
+  updateOrder: ${file(./functions/updateOrder.yml)}
+  deleteOrder: ${file(./functions/deleteOrder.yml)}
 
-  getOrder:
-    handler: handlers/getOrder.handler
-    events:
-      - http:
-          path: orders/{order_id}
-          method: get
-
-  listOrders:
-    handler: handlers/listOrders.handler
-    events:
-      - http:
-          path: orders
-          method: get
-
-  updateOrder:
-    handler: handlers/updateOrder.handler
-    events:
-      - http:
-          path: orders/{order_id}
-          method: put
-
-  deleteOrder:
-    handler: handlers/deleteOrder.handler
-    events:
-      - http:
-          path: orders/{order_id}
-          method: delete
+package:
+  individually: true  # Package functions separately for faster deployment and cleaner bundles
 
 resources:
-  Resources:
-    OrdersTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: ${self:service}-${opt:stage, 'dev'}-orders
-        AttributeDefinitions:
-          - AttributeName: order_id
-            AttributeType: S
-        KeySchema:
-          - AttributeName: order_id
-            KeyType: HASH
-        BillingMode: PAY_PER_REQUEST
+  ${file(./resources/dynamodb.yml)}  # Modular resource definition

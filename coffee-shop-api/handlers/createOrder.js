@@ -1,5 +1,6 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
+import { createOrderSchema } from "./validators/orderValidator.js";
 
 // Use environment variable to support multi-stage table name
 const client = new DynamoDBClient({});
@@ -10,12 +11,18 @@ export const handler = async (event) => {
     try {
         const body = JSON.parse(event.body);
 
+        const { error, value } = createOrderSchema.validate(body);
+        if (error) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({ error: "Invalid input", details: error.details }),
+        };
+        }
+
         const order = {
-            order_id: body.order_id,
-            customer_name: body.customer_name,
-            items: body.items,
-            total_price: body.total_price,
-            status: "pending"
+        ...value,
+        status: "pending",
+        created_at: new Date().toISOString()
         };
 
         await dynamoDB.send(new PutCommand({

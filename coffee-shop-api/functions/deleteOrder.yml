@@ -1,0 +1,5 @@
+  handler: handlers/deleteOrder.handler
+  events:
+    - http:
+        path: orders/{order_id}
+        method: delete
