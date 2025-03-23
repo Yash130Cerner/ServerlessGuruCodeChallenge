@@ -49,6 +49,12 @@ This project simulates a real-world coffee shop backend where customers can plac
 
 **Screenshots** of CodePipeline setup and successful deployment are included in the repository.
 
+![image](https://github.com/user-attachments/assets/7fc799fe-004f-427c-8a71-3cad474893d8)
+
+![image](https://github.com/user-attachments/assets/191aace7-66b6-46aa-aa82-483f6dc5e55f)
+
+![image](https://github.com/user-attachments/assets/d1decc3c-26ef-4707-94a3-c48addf28056)
+
 ---
 
 ## API Endpoints
