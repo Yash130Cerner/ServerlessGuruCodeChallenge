@@ -15,13 +15,14 @@ export const handler = async (event) => {
         if (error) {
         return {
             statusCode: 400,
-            body: JSON.stringify({ error: error.details[0].message }),
+            body: JSON.stringify({ error: "Invalid input", details: error.details }),
         };
         }
 
         const order = {
         ...value,
-        status: "pending"
+        status: "pending",
+        created_at: new Date().toISOString()
         };
 
         await dynamoDB.send(new PutCommand({

@@ -23,7 +23,7 @@ export const handler = async (event) => {
 
         return {
             statusCode: 200,
-            body: JSON.stringify(result.Item),
+            body: JSON.stringify({ order: result.Item}),
         };
     } catch (error) {
         console.error("Error retrieving order:", error);
