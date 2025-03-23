@@ -62,7 +62,7 @@ This project simulates a real-world coffee shop backend where customers can plac
 ## API Endpoints
 
 > Base URL depends on deployed stage & region  
-> Example: `https://abc123.execute-api.us-east-2.amazonaws.com/dev`
+> Example: `https://zirp4704zf.execute-api.us-east-2.amazonaws.com/prod/orders`
 
 | Method | Endpoint            | Description         |
 |--------|---------------------|---------------------|
@@ -72,14 +72,30 @@ This project simulates a real-world coffee shop backend where customers can plac
 | PUT    | `/orders/{id}`      | Update existing     |
 | DELETE | `/orders/{id}`      | Cancel/delete order |
 
-Sample payload for POST `/orders`:
-```json
-{
-  "order_id": "001",
-  "customer_name": "John Doe",
-  "items": [
-    { "name": "Latte", "size": "Large", "price": 5.25 },
-    { "name": "Espresso", "size": "Small", "price": 2.75 }
-  ],
-  "total_price": 8.00
-}
+## AWS Lambda Functions
+
+![image](https://github.com/user-attachments/assets/66bedda5-b96d-491d-8825-7325a09d6183)
+
+## AWS API Gateway
+
+![image](https://github.com/user-attachments/assets/49ab65d8-82b3-4db9-b00f-1ea15446ddfe)
+
+![image](https://github.com/user-attachments/assets/d6dc4091-dc46-4c0d-95e3-4c0ed48fc7bc)
+
+![image](https://github.com/user-attachments/assets/30571bb2-417f-4161-8268-cdb415ad598d)
+
+---
+
+## AWS Dynamo DB
+
+![image](https://github.com/user-attachments/assets/c81649fc-abe8-4abb-8b80-80050bdbece5)
+
+---
+
+## AWS Cloud Watch and Cloud Formation
+
+![image](https://github.com/user-attachments/assets/e8bd1f16-c52e-47ba-b95f-19722b391937)
+
+![image](https://github.com/user-attachments/assets/c7292f1a-f6b2-4062-98b2-dc0404e1ae93)
+
+
