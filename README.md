@@ -55,6 +55,8 @@ This project simulates a real-world coffee shop backend where customers can plac
 
 ![image](https://github.com/user-attachments/assets/d1decc3c-26ef-4707-94a3-c48addf28056)
 
+![image](https://github.com/user-attachments/assets/9de9f9c0-b29d-4095-9e02-bcfac2b81797)
+
 ---
 
 ## API Endpoints
