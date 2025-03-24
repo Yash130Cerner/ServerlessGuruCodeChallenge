@@ -59,6 +59,22 @@ This project simulates a real-world coffee shop backend where customers can plac
 
 ---
 
+## Infrastructure as Code (IaC) Design
+
+All infrastructure is defined using the Serverless Framework and is modularized for scalability and readability:
+
+- `serverless.yml` — Root configuration file
+- `functions/` — Contains YAML files for each Lambda function (createOrder, getOrder, etc.)
+- `resources/` — Contains `dynamodb.yml` to define the table
+- Uses `${file(...)}` imports for clean separation of logic
+- Enables `package.individually: true` for optimized Lambda deployment
+
+Example structure:
+
+![image](https://github.com/user-attachments/assets/a0ff2b2e-18c4-43eb-b5ba-bb8c3e922649)
+
+---
+
 ## API Endpoints
 
 > Base URL depends on deployed stage & region  
