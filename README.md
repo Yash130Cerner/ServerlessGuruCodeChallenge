@@ -98,4 +98,13 @@ This project simulates a real-world coffee shop backend where customers can plac
 
 ![image](https://github.com/user-attachments/assets/c7292f1a-f6b2-4062-98b2-dc0404e1ae93)
 
+---
+
+## Live API Testing
+
+The API has been fully tested using Postman.
+
+![image](https://github.com/user-attachments/assets/11feadd8-9dd1-44ad-af8b-2b33252ea6ee)
+
+Full test walkthrough included in Loom Video.
 
